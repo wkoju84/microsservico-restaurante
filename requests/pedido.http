@@ -14,3 +14,26 @@ GET {{baseUrl}}/pedidos?page=0&size=10&sort=dataAbertura,desc
 
 ### Buscar pedido por ID
 GET {{baseUrl}}/pedidos/1
+
+### Adicionar itens ao pedido
+POST {{baseUrl}}/pedidos/1/itens
+Content-Type: application/json
+
+{
+  "produtoId": 1,
+  "quantidade": 2,
+  "observacao": "Sem cebola"
+}
+
+### Adicionar outro item ao pedido
+POST {{baseUrl}}/pedidos/1/itens
+Content-Type: application/json
+
+{
+  "produtoId": 2,
+  "quantidade": 1,
+  "observacao": "Bem passado"
+}
+
+### Listar itens do pedido
+GET {{baseUrl}}/pedidos/1/itens
