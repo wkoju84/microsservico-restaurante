@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "fechamentos_conta")
@@ -22,7 +23,7 @@ public class FechamentoConta {
     private BigDecimal total;
 
     @Column(name = "data_fechamento")
-    private LocalDate dataFechamento;
+    private LocalDateTime dataFechamento;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pedido_id")
@@ -30,7 +31,7 @@ public class FechamentoConta {
 
     @PrePersist
     public void prePersist(){
-        dataFechamento = LocalDate.now();
+        dataFechamento = LocalDateTime.now();
     }
 
     public Long getId() {
@@ -73,11 +74,11 @@ public class FechamentoConta {
         this.total = total;
     }
 
-    public LocalDate getDataFechamento() {
+    public LocalDateTime getDataFechamento() {
         return dataFechamento;
     }
 
-    public void setDataFechamento(LocalDate dataFechamento) {
+    public void setDataFechamento(LocalDateTime dataFechamento) {
         this.dataFechamento = dataFechamento;
     }
 
